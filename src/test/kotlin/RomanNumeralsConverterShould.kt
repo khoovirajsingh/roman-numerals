@@ -7,4 +7,10 @@ class RomanNumeralsConverterShould {
         val converter = RomanNumeralConverter()
         converter.convert(1) `should be` "I"
     }
+
+    @Test
+    fun `convert number two to roman numeral II`() {
+        val converter = RomanNumeralConverter()
+        converter.convert(2) `should be` "II"
+    }
 }
