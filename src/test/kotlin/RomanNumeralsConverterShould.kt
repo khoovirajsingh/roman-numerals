@@ -17,7 +17,7 @@ class RomanNumeralsConverterShould {
         "2, II",
         "3, III"
     )
-    fun `convert number to roman numeral`(number: Int, numeral: String) {
+    fun `convert numbers less than 4 to roman numeral`(number: Int, numeral: String) {
         converter.convert(number) `should equal` numeral
     }
 }
