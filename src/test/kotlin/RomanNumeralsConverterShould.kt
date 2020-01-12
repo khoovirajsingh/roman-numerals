@@ -18,9 +18,11 @@ class RomanNumeralsConverterShould {
         "2, II",
         "3, III",
         "4, IV",
-        "5, V"
+        "5, V",
+        "6, VI",
+        "7, VII"
     )
-    fun `convert numbers to roman numerals`(number: Int, numeral: String) {
+    fun `convert single digit numbers to roman numerals`(number: Int, numeral: String) {
         converter.convert(number) `should equal` numeral
     }
 }

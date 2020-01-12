@@ -7,6 +7,10 @@ class RomanNumeralConverter {
         5 to "V"
     )
     fun convert(number: Int): String {
-        return romanNumbers.getOrDefault(number, "")
+        if (number <= 5) return numeralFor(number)
+        val remainder = number - 5
+        return numeralFor(5) + numeralFor(remainder)
     }
+
+    private fun numeralFor(number: Int) = romanNumbers.getOrDefault(number, "")
 }
