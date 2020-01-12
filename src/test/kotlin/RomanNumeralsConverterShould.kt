@@ -14,7 +14,8 @@ class RomanNumeralsConverterShould {
     @ParameterizedTest
     @CsvSource(
         "1, I",
-        "2, II"
+        "2, II",
+        "3, III"
     )
     fun `convert number to roman numeral`(number: Int, numeral: String) {
         converter.convert(number) `should equal` numeral
