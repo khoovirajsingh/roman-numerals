@@ -27,4 +27,14 @@ class RomanNumeralsConverterShould {
     fun `convert single digit numbers to roman numerals`(number: Int, numeral: String) {
         converter.convert(number) `should equal` numeral
     }
+
+    @ParameterizedTest
+    @CsvSource(
+        "10, X",
+        "11, XI",
+        "14, XIV"
+    )
+    fun `convert double digit numbers to roman numerals`(number: Int, numeral: String) {
+        converter.convert(number) `should equal` numeral
+    }
 }

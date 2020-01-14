@@ -5,13 +5,19 @@ class RomanNumeralConverter {
         3 to "III",
         4 to "IV",
         5 to "V",
-        9 to "IX"
+        9 to "IX",
+        10 to "X"
     )
     fun convert(number: Int): String {
         val numeral = numeralFor(number)
         if (numeral.isEmpty()) {
-            val remainder = number - 5
-            return numeralFor(5) + numeralFor(remainder)
+            return if (number < 10) {
+                val remainder = number - 5
+                numeralFor(5) + numeralFor(remainder)
+            } else {
+                val remainder = number - 10
+                numeralFor(10) + numeralFor(remainder)
+            }
         }
         return numeral
     }
