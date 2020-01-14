@@ -45,9 +45,25 @@ class RomanNumeralsConverterShould {
     @ParameterizedTest
     @CsvSource(
         "40, XL",
-        "41, XLI"
+        "41, XLI",
+        "44, XLIV",
+        "51, LI",
+        "60, LX",
+        "61, LXI"
     )
     fun `convert remaining two digit numbers to roman numerals`(number: Int, numeral: String) {
+        converter.convert(number) `should equal` numeral
+    }
+
+    @ParameterizedTest
+    @CsvSource(
+        "112, CXII",
+        "448, CDXLVIII",
+        "544, DXLIV",
+        "1001, MI",
+        "3000, MMM"
+    )
+    fun `convert all remaining numbers to roman numerals`(number: Int, numeral: String) {
         converter.convert(number) `should equal` numeral
     }
 }

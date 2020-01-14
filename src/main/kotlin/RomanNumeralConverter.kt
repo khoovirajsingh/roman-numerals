@@ -1,48 +1,28 @@
 class RomanNumeralConverter {
-    private val romanNumbers = mapOf(
-        1 to "I",
-        2 to "II",
-        3 to "III",
-        4 to "IV",
-        5 to "V",
-        9 to "IX",
-        10 to "X",
-        40 to "XL",
-        50 to "L"
+    private val arabicToRoman = mapOf(
+        1000 to "M",
+        900  to "CM",
+        500  to "D",
+        400  to "CD",
+        100  to "C",
+        90   to "XC",
+        50   to "L",
+        40   to "XL",
+        10   to "X",
+        9    to "IX",
+        5    to "V",
+        4    to "IV",
+        1    to "I"
     )
     fun convert(number: Int): String {
-        val numeral = numeralFor(number)
-        if (numeral.isEmpty()) {
-            return when {
-                number < 10 -> {
-                    numeralsForOneDigit(number)
-                }
-                number < 40 -> {
-                    return numeralsForTwoDigits(number, 10)
-                }
-                else -> {
-                    return numeralsForTwoDigits(number, 40)
-                }
+        var input = number
+        var result = ""
+        for ((arabicNumber, romanNumber) in arabicToRoman) {
+            while (input / arabicNumber > 0) {
+                input -= arabicNumber
+                result += romanNumber
             }
         }
-        return numeral
+        return result
     }
-
-    private fun numeralsForTwoDigits(number: Int, divisor: Int): String {
-        val occurrences = number / divisor
-        val remainder = number - (divisor * occurrences)
-        return numeralFor(divisor).repeat(occurrences) + numeralsForOneDigit(remainder)
-    }
-
-    private fun numeralsForOneDigit(number: Int): String {
-        if (number == 0) return ""
-        val numeral = numeralFor(number)
-        if (numeral.isEmpty()) {
-            val remainder = number - 5
-            return numeralFor(5) + numeralFor(remainder)
-        }
-        return numeralFor(number)
-    }
-
-    private fun numeralFor(number: Int) = romanNumbers.getOrDefault(number, "")
 }
