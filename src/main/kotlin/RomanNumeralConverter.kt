@@ -4,12 +4,16 @@ class RomanNumeralConverter {
         2 to "II",
         3 to "III",
         4 to "IV",
-        5 to "V"
+        5 to "V",
+        9 to "IX"
     )
     fun convert(number: Int): String {
-        if (number <= 5) return numeralFor(number)
-        val remainder = number - 5
-        return numeralFor(5) + numeralFor(remainder)
+        val numeral = numeralFor(number)
+        if (numeral.isEmpty()) {
+            val remainder = number - 5
+            return numeralFor(5) + numeralFor(remainder)
+        }
+        return numeral
     }
 
     private fun numeralFor(number: Int) = romanNumbers.getOrDefault(number, "")

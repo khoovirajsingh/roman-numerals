@@ -20,7 +20,9 @@ class RomanNumeralsConverterShould {
         "4, IV",
         "5, V",
         "6, VI",
-        "7, VII"
+        "7, VII",
+        "8, VIII",
+        "9, IX"
     )
     fun `convert single digit numbers to roman numerals`(number: Int, numeral: String) {
         converter.convert(number) `should equal` numeral
