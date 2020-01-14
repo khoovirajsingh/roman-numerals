@@ -11,15 +11,18 @@ class RomanNumeralConverter {
     fun convert(number: Int): String {
         val numeral = numeralFor(number)
         if (numeral.isEmpty()) {
-            return if (number < 10) {
-                val remainder = number - 5
-                numeralFor(5) + numeralFor(remainder)
+            return if (number >= 10) {
+                buildNumerals(number, 10)
             } else {
-                val remainder = number - 10
-                numeralFor(10) + numeralFor(remainder)
+                buildNumerals(number, 5)
             }
         }
         return numeral
+    }
+
+    private fun buildNumerals(number: Int, remain: Int): String {
+        val remainder = number - remain
+        return numeralFor(remain) + numeralFor(remainder)
     }
 
     private fun numeralFor(number: Int) = romanNumbers.getOrDefault(number, "")
