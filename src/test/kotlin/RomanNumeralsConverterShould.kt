@@ -32,7 +32,10 @@ class RomanNumeralsConverterShould {
     @CsvSource(
         "10, X",
         "11, XI",
-        "14, XIV"
+        "14, XIV",
+        "19, XIX",
+        "20, XX",
+        "21, XXI"
     )
     fun `convert double digit numbers to roman numerals`(number: Int, numeral: String) {
         converter.convert(number) `should equal` numeral
