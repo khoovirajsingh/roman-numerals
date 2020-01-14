@@ -35,9 +35,19 @@ class RomanNumeralsConverterShould {
         "14, XIV",
         "19, XIX",
         "20, XX",
-        "21, XXI"
+        "21, XXI",
+        "31, XXXI"
     )
-    fun `convert double digit numbers to roman numerals`(number: Int, numeral: String) {
+    fun `convert teens, twenties and thirties to roman numerals`(number: Int, numeral: String) {
+        converter.convert(number) `should equal` numeral
+    }
+
+    @ParameterizedTest
+    @CsvSource(
+        "40, XL",
+        "41, XLI"
+    )
+    fun `convert remaining two digit numbers to roman numerals`(number: Int, numeral: String) {
         converter.convert(number) `should equal` numeral
     }
 }
